@@ -3,5 +3,21 @@
 }
 
 #wrapper {
-    background-color: rgb(86, 3, 12);
+    background-color: rgb(88, 46, 50);
+}
+
+.photo1 {
+    object-fit: fill;
+}
+
+#filmName {
+    color: #bdbd84;
+}
+
+#page-heading {
+    background-color: tomato;
+}
+
+#col-md-4 {
+    color: yellowgreen;
 }
