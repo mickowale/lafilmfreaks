@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script
+    type="text/javascript"
+    src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'
+    referrerpolicy="origin">
+  </script>
+  <script type="text/javascript">
+  tinymce.init({
+    selector: '#myTextarea',
+    width: 600,
+    height: 300,
+    plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help'
+    ],
+    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+      'bullist numlist outdent indent | link image | print preview media fullpage | ' +
+      'forecolor backcolor emoticons | help',
+    menu: {
+      favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons'}
+    },
+    menubar: 'favs file edit view insert format tools table help',
+    content_css: 'css/content.css'
+  });
+  $( document ).ready(function() {
+  $("form").submit(function(e) {
+      e.preventDefault();
+      var fd = new FormData($("form")[0]);
+      $.ajax({
+        url: $(this).attr('action'),
+        data: fd,
+        processData: false,
+        contentType: false,
+        crossDomain: true,
+        headers: {'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'},
+        type: 'POST',
+        success: function(data, textStatus, xhr){
+          $(".video-display").html('<p>' + data.html + '</p>');
+          console.log('success:' + data.url);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          // do something with error
+          console.log("Upload Failed for video: "  + errorThrown);
+        },
+        xhr: function()
+        {
+          var xhr = new window.XMLHttpRequest();
+          xhr.upload.addEventListener("progress", function(evt){
+            if (evt.lengthComputable) {
+              var percentComplete = (evt.loaded / evt.total) * 100.0;
+              console.log('upload completion: ' + percentComplete.toFixed(2) + '%');
+            }
+          }, false);
+          return xhr;
+        }
+    });
+  });
+
+});
+  </script>
+  <style>
+    label{
+  text-align: right;
+  clear: both;
+  float: left;
+  margin-right:15px;
+  color: white;
+}
+textarea{
+  align-content: center;
+}
+.spoiil{
+  color: white;
+}
+body{
+  background-color: black;
+}
+
+.button {
+  border-style: solid;
+  border-width: 0px;
+  cursor: pointer;
+  font-family: "museo-sans-fontspring", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  display: inline-block;
+  padding-top: 1rem;
+  padding-right: 2rem;
+  padding-bottom: 1.0625rem;
+  padding-left: 2rem;
+  font-size: 1rem;
+  background-color: #00c7e4;
+  border-color: #009fb6;
+  color: #FFFFFF;
+  border-radius: 3px;
+  border-bottom: 1px solid #008194;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background-color 300ms ease-out;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: "museo-sans-fontspring", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #565656;
+}
+
+#upload-input {
+  height: 0px;
+  width: 0px;
+  overflow: hidden
+}
+
+textarea {
+  background-color: #DDDDDD;
+  color: grey;
+}
+
+#loader {
+  display: none;
+}
+
+p {
+  font-family: "museo-sans-fontspring", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #525252;
+}
+
+a {
+  color: #00c7e4;
+  text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+<form id="contact" action="" method="post">
+  <label id = "tobewhite" for="title"> Review Title: </label>
+  <div class="col-md-6">
+      <input name="name" type="text" class="form-control" id="name" placeholder="Title" required="">
+   </div>
+   <div>
+  <label id = reviewlabel> Content: </label>
+  <textarea id="myTextarea" placeholder="Type your review here"></textarea>
+  </div>
+  <div>
+  
+ <!-- <input type="file" id="video" name="video" accept="video/*">
+-->
+</div>
+
+<form id= "video" action="https://upload.embed.ly/1/video?key=YOUR_API_KEY" method="POST" enctype="multipart/form-data">
+  <label for="video">Upload your video/audio review :</label>
+    <input id="video_file" name="video_file" type="file">
+    <input type="submit" class="button" value="Post Review">
+</form>
+<!--<div class="video-display"></div>
+<div class ="spoiler rate"> 
+  <form>
+  <label class="radio-inline">
+      <input type="radio" name="optradio" >10 
+  </label>
+  <label class="radio-inline">
+      <input type="radio" name="optradio"> 20
+  </label></form>
+  <label class="radio-inline">
+  <input type="radio" name="optradio"> 30
+  </label>
+   <label class="radio-inline">
+      <input type="radio" name="optradio" >40
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio">50
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio">60
+    </label>
+     <label class="radio-inline">
+      <input type="radio" name="optradio" >70
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio">80
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio">90
+    </label>
+     <label class="radio-inline">
+      <input type="radio" name="optradio">100
+    </label></div> -->
+    <div class= "spoiil">
+      <label>Spoiler Rate</label>
+    <input type="radio" name="editList" value="always">10
+<input type="radio" name="editList" value="never">20
+<input type="radio" name="editList" value="costChange">30<
+    <input type="radio" name="editList" value="always">40
+<input type="radio" name="editList" value="never">50
+<input type="radio" name="editList" value="costChange">60
+    <input type="radio" name="editList" value="always">70
+<input type="radio" name="editList" value="never">80
+<input type="radio" name="editList" value="costChange">90
+
+<input type="radio" name="editList" value="costChange">100
+
+</div>
+
+</body>
+</html>
