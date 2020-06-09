@@ -8,232 +8,226 @@
 //Support Functions
 
 // A function that sorts a list from low to high and returns sorted index
-function checkIn(index, sortedList){
-  	var count = sortedList.length;
-  	for (var i =0; i < count; i++){
-  		if (sortedList[i] == index){return true;}
-  	}
-  	return false;
+function checkIn(index, sortedList) {
+    var count = sortedList.length;
+    for (var i = 0; i < count; i++) {
+        if (sortedList[i] == index) { return true; }
+    }
+    return false;
 }
-function sortList(unsortedList){
-  	var totalCount = unsortedList.length;
-  	var sortedList = new Array(totalCount);
-  	for (var i=0; i< totalCount; i++){
-  		var smallestIndex = 0;
 
-  		while(checkIn(smallestIndex, sortedList) == true){smallestIndex++;}
+function sortList(unsortedList) {
+    var totalCount = unsortedList.length;
+    var sortedList = new Array(totalCount);
+    for (var i = 0; i < totalCount; i++) {
+        var smallestIndex = 0;
 
-  		for (var j=0; i< totalCount; j++){
-  			if (checkIn(j, sortedList) == false) {
-  				if (unsortedList[smallestIndex] > unsortedList[j]){smallestIndex = j;}
-  			}
-  		}
-  		sortedList[i] = smallestIndex;
-  	}
-  	return sortedList;
-} 
+        while (checkIn(smallestIndex, sortedList) == true) { smallestIndex++; }
+
+        for (var j = 0; i < totalCount; j++) {
+            if (checkIn(j, sortedList) == false) {
+                if (unsortedList[smallestIndex] > unsortedList[j]) { smallestIndex = j; }
+            }
+        }
+        sortedList[i] = smallestIndex;
+    }
+    return sortedList;
+}
 //Get Time function
 function diff_hours(dt2, dt1) {
-  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
-  diff /= (60 * 60);
-  return Math.abs(Math.round(diff));
- }
+    var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= (60 * 60);
+    return Math.abs(Math.round(diff));
+}
 
 
 //End of Support Functions
 
-$( document ).ready(function() {
-  // We do most of the necassary javascript here.
-  var sortBtn = document.getElementById("dropbtn0");
-  var table = document.getElementById("movies_display");
-  var mySelect = document.getElementById('mySelect');
+$(document).ready(function() {
+    // We do most of the necassary javascript here.
+    var sortBtn = document.getElementById("dropbtn0");
+    var table = document.getElementById("movies_display");
+    var mySelect = document.getElementById('mySelect');
 
-  //draw divs containing movie information inside a row== May not be correct, doublecheck
-  function drawDiv(review_object){
-  	var divElement = document.createElement("Div");
+    //draw divs containing movie information inside a row== May not be correct, doublecheck
+    function drawDiv(review_object) {
+        var divElement = document.createElement("Div");
 
-  	var divTitle = document.createElement("Div");
-  	divTitle.innerHTML = review_object.Title;
-  	divTitle.style.height = 50%;
-  	divTitle.style.width = 25%;
-  	divTitle.style.position = "relative"; 
-    divTitle.style.left = 0 + 'px'; 
-    divTitle.style.top = 0 + 'px'; 
-  	divElement.appendChild(divTitle);
+        var divTitle = document.createElement("Div");
+        divTitle.innerHTML = review_object.Title;
+        divTitle.style.height = 50 % ;
+        divTitle.style.width = 25 % ;
+        divTitle.style.position = "relative";
+        divTitle.style.left = 0 + 'px';
+        divTitle.style.top = 0 + 'px';
+        divElement.appendChild(divTitle);
 
-  	var divName = document.createElement("Div");
-  	divName.innerHTML = review_object.Author;
-  	divName.style.height = 50%;
-  	divName.style.width = 25%;
-  	divName.style.position = "relative";
-  	divName.style.left = "0px";
-  	divName.style.top = divTitle.style.height;
-  	divElement.appendChild(divName);
+        var divName = document.createElement("Div");
+        divName.innerHTML = review_object.Author;
+        divName.style.height = 50 % ;
+        divName.style.width = 25 % ;
+        divName.style.position = "relative";
+        divName.style.left = "0px";
+        divName.style.top = divTitle.style.height;
+        divElement.appendChild(divName);
 
-  	var divComment = document.createElement("Div");
-  	divComment.innerHTML = review_object.Comments + "comments";
-  	divComment.style.height = 50%;
-  	divComment.style.width = 9%;
-  	divComment.style.position = "relative"; 
-    divComment.style.right = "0px"; 
-    divComment.style.top = "0px";
-    divElement.appendChild(divComment);
+        var divComment = document.createElement("Div");
+        divComment.innerHTML = review_object.Comments + "comments";
+        divComment.style.height = 50 % ;
+        divComment.style.width = 9 % ;
+        divComment.style.position = "relative";
+        divComment.style.right = "0px";
+        divComment.style.top = "0px";
+        divElement.appendChild(divComment);
 
-    var divDownvote = document.createElement("Div");
-  	divDownvote.innerHTML = "&#8681;" + review_object.Downvotes;
-  	divDownvote.style.height = 50%;
-  	divDownvote.style.width = 8%;
-  	divDownvote.style.position = "relative"; 
-    divDownvote.style.right = divComment.style.width; 
-    divDownvote.style.top = "0px"; 
-    divElement.appendChild(divDownvote);
+        var divDownvote = document.createElement("Div");
+        divDownvote.innerHTML = "&#8681;" + review_object.Downvotes;
+        divDownvote.style.height = 50 % ;
+        divDownvote.style.width = 8 % ;
+        divDownvote.style.position = "relative";
+        divDownvote.style.right = divComment.style.width;
+        divDownvote.style.top = "0px";
+        divElement.appendChild(divDownvote);
 
-  	var divUpvote = document.createElement("Div");
-  	divUpvote.innerHTML ="&#8679;" + review_object.Upvotes;
-  	divUpvote.style.height = 50%;
-  	divUpvote.style.width = 8%;
-  	divUpvote.style.position = "relative"; 
-    divUpvote.style.right = divDownvote.style.width + divComment.style.width; 
-    divUpvote.style.top = "0px"; 
-  	divElement.appendChild(divUpvote);
+        var divUpvote = document.createElement("Div");
+        divUpvote.innerHTML = "&#8679;" + review_object.Upvotes;
+        divUpvote.style.height = 50 % ;
+        divUpvote.style.width = 8 % ;
+        divUpvote.style.position = "relative";
+        divUpvote.style.right = divDownvote.style.width + divComment.style.width;
+        divUpvote.style.top = "0px";
+        divElement.appendChild(divUpvote);
 
-  	var divSpoil = document.createElement("Div");
-  	divSpoil.innerHTML 										//update Spoil-o-meter
-  	divSpoil.style.height = 50%;
-  	divSpoil.style.width = 25%;
-  	divSpoil.style.position = "relative";
-  	divSpoil.style.right = "0px";
-  	divSpoil.style.top = divUpvote.style.height;
-  	divElement.appendChild(divSpoil);
+        var divSpoil = document.createElement("Div");
+        divSpoil.innerHTML //update Spoil-o-meter
+        divSpoil.style.height = 50 % ;
+        divSpoil.style.width = 25 % ;
+        divSpoil.style.position = "relative";
+        divSpoil.style.right = "0px";
+        divSpoil.style.top = divUpvote.style.height;
+        divElement.appendChild(divSpoil);
 
-  	return divElement;
-  }
+        return divElement;
+    }
 
-  //Data Structure: Reviews: Author/ Title/ Date/ Comments/Upvotes/Downvotes/Articles/Spoil 
+    //Data Structure: Reviews: Author/ Title/ Date/ Comments/Upvotes/Downvotes/Articles/Spoil 
 
-  function printTable(sortValue){ //sortValue: Hottest, Newest, Oldest, Spoil-o-Low, Spoil-o-High
-  	return firebase.database().ref(/*Firebase reference*/).once('value', function(snapshot){
-  		var numRows = myTable.rows.length;
-  
-	    for(var i=0;i < numRows;i++) {
-	      myTable.deleteRow(0);
-    	}
-    	var myValue = snapshot.val();		//myValue[myKey] = Review Objects
-    	var keyList = Object.keys(myValue);	//keyList[i]
+    function printTable(sortValue) { //sortValue: Hottest, Newest, Oldest, Spoil-o-Low, Spoil-o-High
+        return firebase.database().ref( /*Firebase reference*/ ).once('value', function(snapshot) {
+            var numRows = myTable.rows.length;
 
-	  	if (sortValue == "Newest"){
-	  		var current = new Date();
-	  		var currentTime = current.getTime();
+            for (var i = 0; i < numRows; i++) {
+                myTable.deleteRow(0);
+            }
+            var myValue = snapshot.val(); //myValue[myKey] = Review Objects
+            var keyList = Object.keys(myValue); //keyList[i]
 
-	  		var count = keyList.length;
-	  		var unsortedTime = new Array(count);
+            if (sortValue == "Newest") {
+                var current = new Date();
+                var currentTime = current.getTime();
 
-	  		for (var i=0; i< count; i++){
-	  			var myKey = keyList[i];
-	  			var reviewTime = new Date(myValue[myKey].Date); //Change Date to something else if you use different names
-	  			unsortedTime[i] = diff_hours(currentTime, reviewTime);
-	  		}
-	  		var sortedList = sortList(unsortedTime);
-	  		for (var i=0; i<count; i++){
-	  			var myKey = keyList[sortedList[i]]; //the sortedList[i] contains the ith smallest element
+                var count = keyList.length;
+                var unsortedTime = new Array(count);
 
-	  			var newRow = table.insertRow(i);
-	  			var Cell = newRow.insertCell(0);
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[i];
+                    var reviewTime = new Date(myValue[myKey].Date); //Change Date to something else if you use different names
+                    unsortedTime[i] = diff_hours(currentTime, reviewTime);
+                }
+                var sortedList = sortList(unsortedTime);
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[sortedList[i]]; //the sortedList[i] contains the ith smallest element
 
-	  			Cell.appendChild(drawDiv(myValue[myKey]));
-	  		}
-	  	}
+                    var newRow = table.insertRow(i);
+                    var Cell = newRow.insertCell(0);
 
-	  	else if (sortValue == "Hottest"){
-	  		var count = keyList.length;
-	  		var unsortedHot = new Array(count);
+                    Cell.appendChild(drawDiv(myValue[myKey]));
+                }
+            } else if (sortValue == "Hottest") {
+                var count = keyList.length;
+                var unsortedHot = new Array(count);
 
-	  		for (var i=0; i<count; i++){
-	  			var myKey = keyList[i];
-	  			unsortedHot[i] = myValue[myKey].Comments + myValue[myKey].Upvotes + myValue[myKey].Downvotes // Change the attributes if necessary, you use different names in Firebase
-	  		}
-	  		var sortedHot = sortList(unsortedHot);
-	  		for (var i=0; i<count; i++){
-	  			var myKey = keyList[sortedHot[count - 1 - i]]; //the sortedHot[count - 1- i] contains the ith greatest element
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[i];
+                    unsortedHot[i] = myValue[myKey].Comments + myValue[myKey].Upvotes + myValue[myKey].Downvotes // Change the attributes if necessary, you use different names in Firebase
+                }
+                var sortedHot = sortList(unsortedHot);
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[sortedHot[count - 1 - i]]; //the sortedHot[count - 1- i] contains the ith greatest element
 
-	  			var newRow = table.insertRow(i);
-	  			var Cell = newRow.insertCell(0);
+                    var newRow = table.insertRow(i);
+                    var Cell = newRow.insertCell(0);
 
-	  			Cell.appendChild(drawDiv(myValue[myKey]));
-	  		}
-	  	}
+                    Cell.appendChild(drawDiv(myValue[myKey]));
+                }
+            } else if (sortValue == "Oldest") {
+                var current = new Date();
+                var currentTime = current.getTime();
 
-	  	else if (sortValue == "Oldest"){
-	  		var current = new Date();
-	  		var currentTime = current.getTime();
+                var count = keyList.length;
+                var unsortedTime = new Array(count);
 
-	  		var count = keyList.length;
-	  		var unsortedTime = new Array(count);
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[i];
+                    var reviewTime = new Date(myValue[myKey].Date); //Change Date to something else if you use different names
+                    unsortedTime[i] = diff_hours(currentTime, reviewTime);
+                }
+                var sortedList = sortList(unsortedTime);
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[sortedList[count - i - 1]]; //the sortedList[count -i -1] contains the ith greatest element
 
-	  		for (var i=0; i< count; i++){
-	  			var myKey = keyList[i];
-	  			var reviewTime = new Date(myValue[myKey].Date); //Change Date to something else if you use different names
-	  			unsortedTime[i] = diff_hours(currentTime, reviewTime);
-	  		}
-	  		var sortedList = sortList(unsortedTime);
-	  		for (var i=0; i<count; i++){
-	  			var myKey = keyList[sortedList[count -i -1]]; //the sortedList[count -i -1] contains the ith greatest element
+                    var newRow = table.insertRow(i);
+                    var Cell = newRow.insertCell(0);
 
-	  			var newRow = table.insertRow(i);
-	  			var Cell = newRow.insertCell(0);
+                    Cell.appendChild(drawDiv(myValue[myKey]));
+                }
+            } else if (sortValue == "Spoil-o-Low") {
+                var count = keyList.length;
+                var unsortedSpoil = new Array(count);
 
-	  			Cell.appendChild(drawDiv(myValue[myKey]));
-	  		}
-	  	}
-	  	else if (sortValue == "Spoil-o-Low"){
-	  		var count = keyList.length;
-	  		var unsortedSpoil = new Array(count);
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[i];
+                    unsortedSpoil[i] = myValue[myKey].Spoil // Change the attributes if necessary, you use different names in Firebase
+                }
+                var sortedSpoil = sortList(unsortedSpoil);
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[sortedSpoil[i]]; //the sortedSpoil[i] contains the ith lowest element
 
-	  		for (var i=0; i<count; i++){
-	  			var myKey = keyList[i];
-	  			unsortedSpoil[i] = myValue[myKey].Spoil // Change the attributes if necessary, you use different names in Firebase
-	  		}
-	  		var sortedSpoil = sortList(unsortedSpoil);
-	  		for (var i=0; i<count; i++){
-	  			var myKey = keyList[sortedSpoil[i]]; //the sortedSpoil[i] contains the ith lowest element
+                    var newRow = table.insertRow(i);
+                    var Cell = newRow.insertCell(0);
 
-	  			var newRow = table.insertRow(i);
-	  			var Cell = newRow.insertCell(0);
+                    Cell.appendChild(drawDiv(myValue[myKey]));
+                }
+            } else if (sortValue == "Spoil-o-High") {
+                var count = keyList.length;
+                var unsortedSpoil = new Array(count);
 
-	  			Cell.appendChild(drawDiv(myValue[myKey]));
-	  		}
-	  	}
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[i];
+                    unsortedSpoil[i] = myValue[myKey].Spoil // Change the attributes if necessary, you use different names in Firebase
+                }
+                var sortedSpoil = sortList(unsortedSpoil);
+                for (var i = 0; i < count; i++) {
+                    var myKey = keyList[sortedSpoil[i]]; //the sortedSpoil[count -  1- i] contains the ith greatest element
 
-	  	else if (sortValue == "Spoil-o-High"){
-	  		var count = keyList.length;
-	  		var unsortedSpoil = new Array(count);
+                    var newRow = table.insertRow(i);
+                    var Cell = newRow.insertCell(0);
 
-	  		for (var i=0; i<count; i++){
-	  			var myKey = keyList[i];
-	  			unsortedSpoil[i] = myValue[myKey].Spoil // Change the attributes if necessary, you use different names in Firebase
-	  		}
-	  		var sortedSpoil = sortList(unsortedSpoil);
-	  		for (var i=0; i<count; i++){
-	  			var myKey = keyList[sortedSpoil[i]]; //the sortedSpoil[count -  1- i] contains the ith greatest element
+                    Cell.appendChild(drawDiv(myValue[myKey]));
+                }
+            }
 
-	  			var newRow = table.insertRow(i);
-	  			var Cell = newRow.insertCell(0);
+        })
+    }
 
-	  			Cell.appendChild(drawDiv(myValue[myKey]));
-	  		}
-	  	}
+    function bindEvents() {
+        mySelect.onchange = function() {
+            var x = document.getElementById("mySelect").value;
+            printTable(x);
+        }
+    }
 
-	})
-  }
-
-  function bindEvents(){
-  	mySelect.onchange = function() {
-   		var x = document.getElementById("mySelect").value;
-   		printTable(x);
- 	}
-  }
-
-  printTable("Hottest");
-  bindEvents();
+    printTable("Hottest");
+    bindEvents();
 
 });
