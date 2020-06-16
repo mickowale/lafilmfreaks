@@ -140,172 +140,139 @@
                         </div>
 
                     </div>
-                </section>
-
-                <section class="simple-post">
-                    <div style="display: inline;">Sort by </div>
-                    <div class="dropdown" style="display: inline;">
-                        <select id="mySelect">
-                  <option value="Hottest">Hottest
-                  <option value="Newest">Newest
-                  <option value="Oldest">Oldest
-                  <option value="Spoil-o-Low">Spoil-o-Low
-                  <option value="Spoil-o-High">Spoil-o-High
-                </select>
-
+                <section class="tables">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h2 id="review-head">REVIEWS</h2>
+                        </div>
                         <div>
-                            <table id="movie_display">
-
+                            <div style="display: inline;"><strong>Sort by</strong> </div>
+                            <div class="dropdown" style="display: inline;">
+                                <select id="mySelect">
+                                    <option value="Hottest">Hottest
+                                    <option value="Newest">Newest
+                                    <option value="Oldest">Oldest
+                                    <option value="Spoil-o-Low">Spoil-o-Low
+                                    <option value="Spoil-o-High">Spoil-o-High
+                                </select>
+                            </div>
+                        </div>
+                        <div class="default-table">
+                            <table class="review-table">
+                                <thead>
+                                    <tr>
+                                        <th>Reviewers</th>
+                                        <th>Description</th>
+                                        <th>Spoil Meter</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Jack</td>
+                                        <td>Lorem ipsum dolor sit amet</td>
+                                        <td>32%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Michael</td>
+                                        <td>Lorem ipsum dolor sit amet</td>
+                                        <td>21%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kanan</td>
+                                        <td>Lorem ipsum dolor sit amet</td>
+                                        <td>30%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ribka</td>
+                                        <td>Lorem ipsum dolor sit amet</td>
+                                        <td>11%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kien</td>
+                                        <td>Lorem ipsum dolor sit amet</td>
+                                        <td>40%</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
+                </section>
+                <!-- Forms -->
+                <section class="forms">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="section-heading">
+                                    <h2 id="review-head">Write-Up</h2>
+                                </div>
+                                <form id="contact" action="" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input name="name" type="text" class="form-control" id="name" placeholder="Review Title" required="">
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input name="email" type="text" class="form-control" id="email" placeholder="Short Description..." required="">
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="radio-item">
+                                                <input name="demo-small" type="checkbox" id="demo-priority-small" value="small">
+                                                <label for="demo-priority-small">Non-Spoiler</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="radio-item">
+                                                <input name="demo-medium" type="checkbox" id="demo-priority-medium" value="medium">
+                                                <label for="demo-priority-medium">Moderate Spoiler</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="radio-item">
+                                                <input name="demo-large" type="checkbox" id="demo-priority-large" value="large">
+                                                <label for="demo-priority-large">Complete Spoiler</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <label> Attach audio/video:</label> <input type="file" id="video" name="video" accept="video/*">
+                                        </div>
 
+                                        <div class="col-12">
+                                            <textarea name="demo-message" id="demo-message" placeholder="Write your review" rows="6"></textarea>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" id="form-submit" class="button">POST</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
-                <section class="reviews">
-                    <div class="col-md-12">
-                        <select name="category" id="category">
-              <option value="categories" selected>Select Category</option>
-              <option value="Featured">Newest</option>
-              <option value="Newest">Hottest</option>
-              <option value="Low Price">Oldest</option>
-              <option value="High Price">Spoil-o-meter Low</option>
-              </select>
-                        <!-- Services -->
-                        <section class="tables">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="section-heading">
-                                            <h2 id="review-head">REVIEWS</h2>
-                                        </div>
-                                        <div class="default-table">
-                                            <table class="review-table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Reviewers</th>
-                                                        <th>Description</th>
-                                                        <th>Spoil Meter</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Jack</td>
-                                                        <td>Lorem ipsum dolor sit amet</td>
-                                                        <td>32%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Michael</td>
-                                                        <td>Lorem ipsum dolor sit amet</td>
-                                                        <td>21%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Kanan</td>
-                                                        <td>Lorem ipsum dolor sit amet</td>
-                                                        <td>30%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ribka</td>
-                                                        <td>Lorem ipsum dolor sit amet</td>
-                                                        <td>11%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Kien</td>
-                                                        <td>Lorem ipsum dolor sit amet</td>
-                                                        <td>40%</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-
-                                        </div>
-                        </section>
-                        <!-- Forms -->
-                        <section class="forms">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="section-heading">
-                                            <h2 id="review-head">Write-Up</h2>
-                                        </div>
-                                        <form id="contact" action="" method="post">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <fieldset>
-                                                        <input name="name" type="text" class="form-control" id="name" placeholder="Review Title" required="">
-                                                    </fieldset>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <fieldset>
-                                                        <input name="email" type="text" class="form-control" id="email" placeholder="Short Description..." required="">
-                                                    </fieldset>
-                                                </div>
-                                                <!-- <div class="col-md-12">
-                                                                    <select name="category" id="category">
-                                        <option value="categories" selected>Select Category</option>
-                                        <option value="Featured">General</option>
-                                        <option value="Newest">Specific</option>
-                                        <option value="Low Price">Technical</option>
-                                        <option value="High Price">Application</option>
-                                      </select>
-                                                </div> -->
-                                                <div class="col-md-4 col-sm-4">
-                                                    <div class="radio-item">
-                                                        <input name="demo-small" type="checkbox" id="demo-priority-small" value="small">
-                                                        <label for="demo-priority-small">Non-Spoiler</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4">
-                                                    <div class="radio-item">
-                                                        <input name="demo-medium" type="checkbox" id="demo-priority-medium" value="medium">
-                                                        <label for="demo-priority-medium">Moderate Spoiler</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4">
-                                                    <div class="radio-item">
-                                                        <input name="demo-large" type="checkbox" id="demo-priority-large" value="large">
-                                                        <label for="demo-priority-large">Complete Spoiler</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4">
-                                                   <label> Attach audio/video:</label> <input type="file" id="video" name="video" accept="video/*">
-                                                </div>
-
-                                                <div class="col-12">
-                                                    <textarea name="demo-message" id="demo-message" placeholder="Write your review" rows="6"></textarea>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <button type="submit" id="form-submit" class="button">SUBMIT</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        </div>
-                        </div>
+            </div>
 
 
 
-                        </div>
-                        <!-- Scripts -->
-                        <script src="lafilmfreaks.js"></script>>
+        </div>
+        <!-- Scripts -->
+        <script src="lafilmfreaks.js"></script>>
 
-                        <!-- Bootstrap core JavaScript -->
-                        <script src="vendor/jquery/jquery.min.js"></script>
-                        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                        <script src="assets/js/browser.min.js"></script>
-                        <script src="assets/js/breakpoints.min.js"></script>
-                        <script src="assets/js/transition.js"></script>
-                        <script src="assets/js/owl-carousel.js"></script>
-                        <script src="assets/js/custom.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/transition.js"></script>
+        <script src="assets/js/owl-carousel.js"></script>
+        <script src="assets/js/custom.js"></script>
 
 
 
-</body>
+    </body>
 
 
 </html>
