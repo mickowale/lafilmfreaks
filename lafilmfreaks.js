@@ -44,6 +44,15 @@ function diff_hours(dt2, dt1) {
     return Math.abs(Math.round(diff));
 }
 
+function get_review_html (title, description, contents) {
+    html = 
+        "<tr>\
+            <td> Ted Mosby </td>\
+            <td>" + title + "</td>\
+            <td>50%</td>\
+        </tr>"
+    return html;
+}
 
 //End of Support Functions
 
@@ -52,18 +61,18 @@ $(document).ready(function() {
     // Your web app's Firebase configuration
     //////////////////////////////////////////////////////////
     ///////////// Initialize the firebase database ///////////
-    var firebaseConfig = {
-        apiKey: "AIzaSyDjJu5i81w26naQgnazTU4jLba9oNBY2Ic",
-        authDomain: "hci-pr3-9e2b2.firebaseapp.com",
-        databaseURL: "https://hci-pr3-9e2b2.firebaseio.com",
-        projectId: "hci-pr3-9e2b2",
-        storageBucket: "hci-pr3-9e2b2.appspot.com",
-        messagingSenderId: "1079814003486",
-        appId: "1:1079814003486:web:b97b6729ea5f5e83b8c70f",
-        measurementId: "G-KBHVMNE94B"
-    };
-    firebase.initializeApp(firebaseConfig);
-    var db = firebase.firestore();
+    // var firebaseConfig = {
+    //     apiKey: "AIzaSyDjJu5i81w26naQgnazTU4jLba9oNBY2Ic",
+    //     authDomain: "hci-pr3-9e2b2.firebaseapp.com",
+    //     databaseURL: "https://hci-pr3-9e2b2.firebaseio.com",
+    //     projectId: "hci-pr3-9e2b2",
+    //     storageBucket: "hci-pr3-9e2b2.appspot.com",
+    //     messagingSenderId: "1079814003486",
+    //     appId: "1:1079814003486:web:b97b6729ea5f5e83b8c70f",
+    //     measurementId: "G-KBHVMNE94B"
+    // };
+    // firebase.initializeApp(firebaseConfig);
+    // var db = firebase.firestore();
     /////////////////////////////////////////////////////////
 
 
@@ -255,5 +264,28 @@ $(document).ready(function() {
     $('#sign_me_up').click(function() {
         location.replace('index.html')
     });    
+
+    $('#post-review-button').click(function() {
+        var rtitle = $('#review-title').val();
+        var rdescription = $('#review-description').val();
+        var rtext = $('#review-text').val();
+        var rfile = $('#attatched-file').val();  
+        var html = get_review_html (rtitle, rdescription, rtext);
+        alert(rtitle);
+        var tableRef = document.getElementById('review-table2').getElementsByTagName('tbody')[0];  
+        alert(tableRef)
+        var newRow = tableRef.insertRow();
+        alert("row inserted");
+        var newCell = newRow.insertCell(0);
+        alert("cell inserted");
+        var newText = document.createTextNode('New row');
+        alert("mode created")
+        newCell.appendChild(newText);
+        alert("child appended")
+        // var rowCount = table.rows.length;   
+        alert(html);
+        $('#review-table').find('tbody').append(html) ;
+        $('#review-table2').bootstrapTable()
+    });
 
 });

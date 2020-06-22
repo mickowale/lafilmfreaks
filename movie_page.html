@@ -24,7 +24,35 @@
 </head>
 
 <body class="is-preload">
-
+    <!-- <table id="review-table2">
+        <tbody>
+            <tr>
+                <td>Jack</td>
+                <td>Lorem ipsum dolor sit amet</td>
+                <td>32%</td>
+            </tr>
+            <tr>
+                <td>Michael</td>
+                <td>Lorem ipsum dolor sit amet</td>
+                <td>21%</td>
+            </tr>
+            <tr>
+                <td>Kanan</td>
+                <td>Lorem ipsum dolor sit amet</td>
+                <td>30%</td>
+            </tr>
+            <tr>
+                <td>Ribka</td>
+                <td>Lorem ipsum dolor sit amet</td>
+                <td>11%</td>
+            </tr>
+            <tr>
+                <td>Kien</td>
+                <td>Lorem ipsum dolor sit amet</td>
+                <td>40%</td>
+            </tr>
+        </tbody>
+    </table> -->
     <!-- Wrapper -->
     <div id="wrapper">
 
@@ -158,7 +186,7 @@
                             </div>
                         </div>
                         <div class="default-table">
-                            <table class="review-table">
+                            <table id="review-table">
                                 <thead>
                                     <tr>
                                         <th>Reviewers</th>
@@ -166,30 +194,30 @@
                                         <th>Spoil Meter</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id = review-list>
                                     <tr>
                                         <td>Jack</td>
-                                        <td>Lorem ipsum dolor sit amet</td>
+                                        <td>What a great movie!!</td>
                                         <td>32%</td>
                                     </tr>
                                     <tr>
                                         <td>Michael</td>
-                                        <td>Lorem ipsum dolor sit amet</td>
+                                        <td>This movie changed my perspective on movies.</td>
                                         <td>21%</td>
                                     </tr>
                                     <tr>
                                         <td>Kanan</td>
-                                        <td>Lorem ipsum dolor sit amet</td>
-                                        <td>30%</td>
+                                        <td>The ending sucks!</td>
+                                        <td>90%</td>
                                     </tr>
                                     <tr>
                                         <td>Ribka</td>
-                                        <td>Lorem ipsum dolor sit amet</td>
+                                        <td>Canny, witty and just marvelous.</td>
                                         <td>11%</td>
                                     </tr>
                                     <tr>
                                         <td>Kien</td>
-                                        <td>Lorem ipsum dolor sit amet</td>
+                                        <td>My favorite characters are back!</td>
                                         <td>40%</td>
                                     </tr>
                                 </tbody>
@@ -209,12 +237,12 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <fieldset>
-                                                <input name="name" type="text" class="form-control" id="name" placeholder="Review Title" required="">
+                                                <input type="text" class="form-control" id="review-title" placeholder="Review Title" required="">
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6">
                                             <fieldset>
-                                                <input name="email" type="text" class="form-control" id="email" placeholder="Short Description..." required="">
+                                                <input type="text" class="form-control" id="review-description" placeholder="Short Description..." required="">
                                             </fieldset>
                                         </div>
                                         <div class="col-md-4 col-sm-4">
@@ -236,14 +264,14 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-sm-4">
-                                            <label> Attach audio/video:</label> <input type="file" id="video" name="video" accept="video/*">
+                                            <label> Attach audio/video:</label> <input type="file" id="attatched-file" name="video" accept="video/*">
                                         </div>
 
                                         <div class="col-12">
-                                            <textarea name="demo-message" id="demo-message" placeholder="Write your review" rows="6"></textarea>
+                                            <textarea  id="review-text" placeholder="Write your review" rows="6"></textarea>
                                         </div>
                                         <div class="col-md-12">
-                                            <button type="submit" id="form-submit" class="button">POST</button>
+                                            <button type="submit" id="post-review-button" class="button">POST</button>
                                         </div>
                                     </div>
                                 </form>
@@ -257,6 +285,7 @@
 
 
         </div>
+    </div>
         <!-- Scripts -->
         <script src="lafilmfreaks.js"></script>>
 
