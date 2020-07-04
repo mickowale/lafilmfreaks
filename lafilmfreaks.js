@@ -267,25 +267,13 @@ $(document).ready(function() {
 
     $('#post-review-button').click(function() {
         var rtitle = $('#review-title').val();
+        if (rtitle.length < 5) return;
         var rdescription = $('#review-description').val();
         var rtext = $('#review-text').val();
         var rfile = $('#attatched-file').val();  
         var html = get_review_html (rtitle, rdescription, rtext);
-        alert(rtitle);
-        var tableRef = document.getElementById('review-table2').getElementsByTagName('tbody')[0];  
-        alert(tableRef)
-        var newRow = tableRef.insertRow();
-        alert("row inserted");
-        var newCell = newRow.insertCell(0);
-        alert("cell inserted");
-        var newText = document.createTextNode('New row');
-        alert("mode created")
-        newCell.appendChild(newText);
-        alert("child appended")
-        // var rowCount = table.rows.length;   
-        alert(html);
-        $('#review-table').find('tbody').append(html) ;
-        $('#review-table2').bootstrapTable()
+        $('#review-list').append(html) ;
+        document.getElementById("review-form").reset()
     });
 
 });
