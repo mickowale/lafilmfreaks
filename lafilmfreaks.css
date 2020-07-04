@@ -1,37 +1,25 @@
 #header {
     background-color: black;
 }
+progress {
+    width: 200px;
+    height: 30px;
+    background-color:lightsteelblue;
 
-<<<<<<< HEAD #wrapper {
-    background-color: rgb(88, 46, 50);
 }
-
-.photo1 {
-    object-fit: fill;
+progress.green{
+    background-color: green;
+    color: green;
 }
-
-#filmName {
-    color: #bdbd84;
+progress.orange{
+    background-color: green;
+    color: green;
 }
-
-#page-heading {
-    background-color: tomato;
+progress.red{
+    background-color:red;
+    color:red;  
 }
-
-#review-table {
-    color: black;
-}
-
-#review-head {
-    color: #bdbd84;
-}
-
-#form-submit {
-    color: #bdbd84;
-}
-
-#sidebar {
-    float: left;
-}
-
-=======>>>>>>>58128f39130fd313ea78a1f3aec45a644eaf1495
+/* progress.red[value] {color:red} IE10 */
+progress.red::-webkit-progress-value {background-color:red}
+progress.green::-webkit-progress-value {background-color:green}
+progress.orange::-webkit-progress-value {background-color:orange}

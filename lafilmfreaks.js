@@ -273,7 +273,19 @@ $(document).ready(function() {
         var rfile = $('#attatched-file').val();  
         var html = get_review_html (rtitle, rdescription, rtext);
         $('#review-list').append(html) ;
-        document.getElementById("review-form").reset()
+        document.getElementById("review-form").reset();
     });
+
+    $(".progressBar").click(function(e) {
+        $(this).addClass("red");
+        var percentage = ((e.pageX - e.target.offsetLeft) - 83)/198;
+        var approxValue = percentage * 10;
+        $(this).attr('value', approxValue);
+        $(this).removeClass();
+        if (approxValue <= 3.5) $(this).addClass("green");
+        else if (approxValue <= 7) $(this).addClass("orange");
+        else $(this).addClass("red");
+    
+      })
 
 });
