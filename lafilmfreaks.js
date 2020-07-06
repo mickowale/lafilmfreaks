@@ -278,7 +278,7 @@ $(document).ready(function() {
 
     $(".progressBar").click(function(e) {
         $(this).addClass("red");
-        var percentage = ((e.pageX - e.target.offsetLeft) - 83)/198;
+        var percentage = ((e.pageX - e.target.offsetLeft) - 505)/198;
         var approxValue = percentage * 10;
         $(this).attr('value', approxValue);
         $(this).removeClass();
